@@ -1,0 +1,10 @@
+{
+  "name": "campus-lost-found-netlify",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Campus Lost & Found on Netlify: static site + Netlify Functions + Netlify Blobs",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

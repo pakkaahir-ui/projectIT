@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Campus Lost &amp; Found</title>
+  <meta name="description" content="Report and find lost items on campus.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap bar">
+      <div class="brand"><span class="logo" aria-hidden="true">🧭</span><h1>Campus Lost &amp; Found</h1></div>
+      <input id="search" class="search" type="search" placeholder="Search title or description…" aria-label="Search items">
+      <button id="open-report" class="btn primary">＋ Report an Item</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="filters">
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="pills" id="pills" aria-label="Category filter"></div>
+    </div>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <section id="grid" class="grid" aria-label="Items"></section>
+  </main>
+
+  <!-- Report dialog -->
+  <dialog id="report-dialog" aria-labelledby="report-title">
+    <form id="report-form" class="sheet" enctype="multipart/form-data" novalidate>
+      <div class="sheet-head"><h2 id="report-title">Report an Item</h2><button type="button" class="icon-btn" data-close aria-label="Close">✕</button></div>
+      <div class="sheet-body">
+        <div id="form-error" class="alert" hidden></div>
+        <fieldset class="type-pick">
+          <legend>What happened?</legend>
+          <label class="radio lost"><input type="radio" name="type" value="lost" checked><span>I lost something</span></label>
+          <label class="radio found"><input type="radio" name="type" value="found"><span>I found something</span></label>
+        </fieldset>
+        <label class="field">Title *<input name="title" maxlength="100" required placeholder="e.g. Blue Hydroflask"><small class="err" data-err="title"></small></label>
+        <label class="field">Description *<textarea name="description" rows="3" maxlength="1000" required placeholder="Colour, brand, distinguishing marks…"></textarea><small class="err" data-err="description"></small></label>
+        <div class="two">
+          <label class="field">Category *<select name="category" id="category-select"></select></label>
+          <label class="field">Date *<input type="date" name="date" id="date-input" required><small class="err" data-err="date"></small></label>
+        </div>
+        <label class="field">Location *<input name="location" maxlength="120" required placeholder="e.g. Library 2nd Floor"><small class="err" data-err="location"></small></label>
+        <label class="field">Contact (email or phone) *<input name="contact" maxlength="120" required placeholder="you@campus.edu"><small class="err" data-err="contact"></small></label>
+        <div class="field">
+          <span>Photo (optional)</span>
+          <label class="drop" for="photo-input"><span id="drop-text">📷 Tap to add a photo (JPEG, PNG or WebP)</span><img id="preview" alt="Selected photo preview" hidden></label>
+          <input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" class="sr">
+          <small class="err" data-err="photo"></small>
+        </div>
+      </div>
+      <div class="sheet-foot">
+        <button type="button" class="btn" data-close>Cancel</button>
+        <button type="submit" class="btn primary" id="submit-btn">Submit report</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Details dialog -->
+  <dialog id="detail-dialog" aria-label="Item details"><div class="sheet" id="detail-body"></div></dialog>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
