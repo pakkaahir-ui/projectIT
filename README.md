@@ -2,14 +2,14 @@
 
 Everyone who opens your Netlify link sees the same board. Reports and photos are saved on Netlify, not in the visitor's browser.
 
-- **Frontend:** plain HTML/CSS/JS in `public/` (no build step)
-- **Backend:** one Netlify Function, `netlify/functions/api.mjs`
+- **Frontend:** plain HTML/CSS/JS in `campus-lost-found-netlify/public/` (no build step)
+- **Backend:** one Netlify Function, `campus-lost-found-netlify/netlify/functions/api.mjs`
 - **Storage:** Netlify Blobs (posts, contact details, photos). No separate database to set up.
 
 ## Deploy (GitHub + Netlify, about 10 minutes)
 
 1. Create a GitHub repository and upload everything in this folder (not `node_modules`).
-2. In Netlify: **Add new site -> Import an existing project -> GitHub**, pick the repository. Leave the build command empty; `netlify.toml` already sets the publish folder and functions folder. Click **Deploy**.
+2. In Netlify: **Add new site -> Import an existing project -> GitHub**, pick the repository and set **Base directory** to `campus-lost-found-netlify`. Leave the build command empty; `netlify.toml` already sets the publish folder and functions folder. Click **Deploy**.
 3. After the first deploy, open **Site configuration -> Environment variables** and add `ADMIN_KEY` with a long random value (this lets you delete spam). Then **Deploys -> Trigger deploy** so it takes effect.
 4. Open your `*.netlify.app` link, post an item with a photo, then open the link on another device. The item should appear there too.
 
